@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import {
@@ -9,22 +10,51 @@ import {
  // TwitterLoginProvider,
 } from "angular-6-social-login";
 import { SigninComponent } from './signin/signin.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { ChatRoomComponent } from './chat-room/chat-room.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+ 
+  { path: '',
+    redirectTo: '/signin',
+    pathMatch: 'full'
+  },
+
+  { path :'ChatRoom',
+    component: ChatRoomComponent
+  },
+
+  { path :'signin',
+    component: SigninComponent
+  
+  }
+  
+  
+
+  
+ 
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    SigninComponent
+    SigninComponent,
+    ChatRoomComponent
   ],
   imports: [
     BrowserModule,SocialLoginModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
+  
   providers: [ {
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [ RouterModule ]
 })
 export class AppModule {}
 

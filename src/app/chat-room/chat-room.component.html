@@ -1,0 +1,28 @@
+<div class= channels>
+
+<div class=messages>
+<div >
+  <input type="text" placeholder="create channel" [(ngModel)]="addchnl"/>
+  <button (click)="addCh()" >Create channel</button><br/>
+</div>
+
+<div>
+      <input type="text" placeholder="add user"  [(ngModel)]="adduser"/>
+      <button (click)="addmember()" >add user</button><br/>
+</div>
+
+<div class=send>
+      <input type="text" placeholder="send Message"  id="type" [(ngModel)]="sendmsg"  >
+      <button (click)="sendMsg()" >send message</button><br/>
+</div>
+
+ <div class=show>
+     <!-- <button (click)="showMsg()" >show message  </button>  -->
+      <ul *ngFor="let msgdetail of messages">
+        <li>{{msgdetail}}</li>
+       </ul>   
+       </div>      
+
+
+</div>
+
