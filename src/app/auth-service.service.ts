@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from '../../node_modules/rxjs';
 import { map} from 'rxjs/operators'
+import { CanActivate } from '../../node_modules/@angular/router';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthServiceService {
+export class AuthServiceService implements CanActivate {
   UserName: string = 'AC9c13dd261af3b9a2f88440fcc178f61c';
   Password: string = 'a0ff7ddbd498a53fa1e4200ea05b79c8';  
   channelId= 'CH11a0ea120dec438c9d1880527ed00e5d'
@@ -15,7 +16,7 @@ export class AuthServiceService {
  channellist: any;
   
   url = 'https://chat.twilio.com/v2/Services';
- channel : string="https://chat/services/IS8b9188e1f58e439b94915110ee3afb4e/channels"
+ channel : string="https://chat.twilio.com/v2/Services/ISe4edd166d507411f9ed229d1fa3bcce6/Channels"
  ServiceId: string="IS8b9188e1f58e439b94915110ee3afb4e";
   
 
@@ -35,8 +36,18 @@ export class AuthServiceService {
 //   }
 // }
 constructor(private http:HttpClient) { }
+canActivate(){
+  if(localStorage.getItem('id')==='113567024437401345852')
+  {
+    return true;
+  }
+  else
+  {
+    false;
+  }
+}
 addchnl :string;
-adduser:string;
+adduser : string;
 sendmsg : string;
 showmsg : string;
   
@@ -61,12 +72,12 @@ setData() : Observable<any>{
 // }
 
 displayChannel() : Observable<any>{
-  return this.http.get(this.channel, httpOptions);
+  return this.http.get('https://chat.twilio.com/v2/Services/ISe4edd166d507411f9ed229d1fa3bcce6/Channels', httpOptions);
 }
 // chnl : string;
 addChannel(addchnl ) : Observable<any>{
  // const body=new HttpParams().set('UniqueName', 'chatting');
-  return this.http.post("https://chat.twilio.com/v2/Services/IS8b9188e1f58e439b94915110ee3afb4e/Channels",'FriendlyName=Prakhar&UniqueName='+addchnl , httpOptions);
+  return this.http.post("https://chat.twilio.com/v2/Services/ISe4edd166d507411f9ed229d1fa3bcce6/Channels",'FriendlyName=Prakhar&UniqueName='+addchnl , httpOptions);
 }
 
 
@@ -76,7 +87,7 @@ addChannel(addchnl ) : Observable<any>{
 
 
 addUser(adduser) : Observable<any>{
-  return this.http.get("https://chat.twilio.com/v2/Services/IS8b9188e1f58e439b94915110ee3afb4e/users"+adduser, httpOptions);
+  return this.http.get("https://chat.twilio.com/v2/Services/ISe4edd166d507411f9ed229d1fa3bcce6/users"+adduser, httpOptions);
 }
 
 sendMessage(sendmsg) : Observable<any>{

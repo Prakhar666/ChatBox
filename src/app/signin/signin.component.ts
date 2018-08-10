@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   AuthService,
   GoogleLoginProvider,
- // TwitterLoginProvider
+  FacebookLoginProvider
 } from 'angular-6-social-login';
 import { AuthServiceService } from '../auth-service.service';
 import { RouterModule, Routes, Router } from '@angular/router';
@@ -20,20 +20,26 @@ export class SigninComponent {
     let socialPlatformProvider;
     if(socialPlatform == "google"){
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-      var q= this.ser.getDetail();
-      q.subscribe(data => console.log(data))
-      this.route.navigate['/ChatRoom'];
+      var val= this.ser.getDetail();
+      val.subscribe(data => console.log(data))
+      
 
     } 
       
-    // else if (socialPlatform == "twitter") {
-    //   socialPlatformProvider = TwitterLoginProvider.PROVIDER_ID;
-    // }
+    else if (socialPlatform == "facebook") {
+      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+      var val= this.ser.getDetail();
+      val.subscribe(data => console.log(data))
+    }
     
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         console.log(socialPlatform+" sign in data : " , userData);
+        this.route.navigate(['ChatRoom']);
+        localStorage.setItem('id', userData.id);
+        localStorage.setItem('name', userData.name);
         
+
 
         
             

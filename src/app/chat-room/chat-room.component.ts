@@ -17,6 +17,9 @@ export class ChatRoomComponent implements OnInit {
   sendmsg : string;
   showmsg : string;
   messages=[];
+  channelArray=[];
+
+  
     addCh()
     {
      this.ser.addChannel(this.addchnl).subscribe(Response=> (console.log(Response)));
@@ -56,11 +59,29 @@ export class ChatRoomComponent implements OnInit {
       console.log(err);
     } 
 
+   }
+
+  showChannelList() {
+    this.ser.displayChannel().subscribe(res => {
+
+      // console.log(res.channels[0].unique_name);
+      var len = res.channels.length;
+      for (let index = 0; index < len; index++) {
+        this.channelArray[index] = res.channels[index].unique_name;
+        // console.log( JSON.stringify(this.channelArray[index]));
+      }
+    },
+      err => {
+        console.log(err);
+      })
   }
+
+
  
   ngOnInit() {
 
-    this.showMsg()
+    this.showMsg();
+    this.showChannelList();
   }
 
-}
+  }
