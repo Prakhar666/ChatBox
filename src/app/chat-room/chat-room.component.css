@@ -1,5 +1,5 @@
 .channels{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 100%;
     width: 20%;
     position: absolute;
@@ -46,11 +46,11 @@
     margin-top: 1%;
 }
 
-.send{
+.typetext{
     border: 1px solid black;
-    height: 12%;
+    height: 8%;
     width: 100%;
-    margin-top: 49%;
+    margin-top: 54%;
     position: absolute;
     /* margin-left: -5%; */
 }
@@ -60,9 +60,13 @@
     height: 100%;
 }
 
+#sendM{
+    height: 100%;
+}
+
 .show{
-    border: 1px solid blue;
-    height: 75%;
+    /* border: 1px solid blue; */
+    height: 84%;
     width: 100%;
     position: absolute;
     /* margin-left: 60%; */
@@ -72,3 +76,30 @@
     overflow: auto;
     /* margin-bottom: 50%; */
 }
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+#chnl{
+    color: rgb(238, 159, 183);
+    /* position: absolute; */
+    overflow: hidden;
+}
+
+#list{
+    overflow: hidden;
+}
+
+#createCh{
+    margin-top: 2%;
+    /* margin-bottom: 30%; */
+    height: 40%;
+    width: 100%;
+    /* position: absolute; */
+}
+

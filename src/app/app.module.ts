@@ -25,7 +25,7 @@ const routes: Routes = [
 
   { path :'ChatRoom',
     component: ChatRoomComponent,
-    canActivate: [AuthServiceService]
+    
   },
 
   { path :'signin',

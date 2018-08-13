@@ -15,7 +15,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 export class SigninComponent {
 
   constructor(private socialAuthService: AuthService, private ser : AuthServiceService, private route : Router) { }
-
+    userData: string;
   public socialSignIn(socialPlatform : string) {
     let socialPlatformProvider;
     if(socialPlatform == "google"){
@@ -26,19 +26,23 @@ export class SigninComponent {
 
     } 
       
-    else if (socialPlatform == "facebook") {
-      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-      var val= this.ser.getDetail();
-      val.subscribe(data => console.log(data))
-    }
+    // else if (socialPlatform == "facebook") {
+    //   socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+    //   var val= this.ser.getDetail();
+    //   val.subscribe(data => console.log(data))
+    // }
     
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         console.log(socialPlatform+" sign in data : " , userData);
-        this.route.navigate(['ChatRoom']);
-        localStorage.setItem('id', userData.id);
-        localStorage.setItem('name', userData.name);
+
+         localStorage.setItem('id', userData.id);
+         localStorage.setItem('name', userData.name);
+
+        // this.ser.UserData=userData;
+        // this.socialAuthService.auth=true;
         
+        this.route.navigate(['ChatRoom']);
 
 
         

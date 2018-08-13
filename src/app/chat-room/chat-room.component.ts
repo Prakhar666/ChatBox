@@ -10,7 +10,10 @@ import { AuthServiceService } from '../auth-service.service';
 })
 export class ChatRoomComponent implements OnInit {
 
-  constructor(private ser : AuthServiceService) { }
+  constructor(private ser : AuthServiceService) { 
+    this.id = localStorage.getItem('id');
+  }
+  id;
   //str1: string;
   addchnl :string;
   adduser:string;
@@ -18,69 +21,78 @@ export class ChatRoomComponent implements OnInit {
   showmsg : string;
   messages=[];
   channelArray=[];
+  displayname=localStorage.getItem('name');
 
   
     addCh()
     {
-     this.ser.addChannel(this.addchnl).subscribe(Response=> (console.log(Response)));
-    }
+      if(this.addchnl!= ""){
+        var info = this.ser.addChannel(this.addchnl).subscribe(res => {});
+      } }
+    //   }
+    //  this.ser.addChannel(this.addchnl).subscribe(Response=> (console.log(Response)));
+    // }
 
     addmember()
     {
     this.ser.addUser(this.adduser).subscribe(Response=> (console.log(Response)));
     }
  
-    sendMsg()
-     {
-      this.ser.sendMessage(this.sendmsg).subscribe(res=>{
-      console.log(res)
-     }),
-      err=>{
-        console.log(err);
-      }
+   
+  member;
+    sendMsg() {
+  
+      this.ser.sendMessage(this.sendmsg,this.member).subscribe(data=>console.log(data));
+    
+      this.ser.showMessage(this.member).subscribe(data=>{})
     }
+
  
     
     showMsg()   
   {
    
-   this.ser.showMessage().subscribe(res1=>{
-      console.log(res1); 
-      let length =res1.messages.length;
-      //var i;
-      //var messages[]
+ 
+  if(this.member!= undefined)
+  {
+  // this.ser.showmsg.message;
+  this.ser.showMessage(this.member).subscribe(res1=>{
+     this.messages = res1.messages;
+ });
+  
+}
 
-      for(let index=0;index<length;index++)
-      {
-        this.messages.push(res1.messages[index].body);
-      }
-     }),
-    err=>{
-      console.log(err);
-    } 
-
-   }
+}
 
   showChannelList() {
     this.ser.displayChannel().subscribe(res => {
-
-      // console.log(res.channels[0].unique_name);
-      var len = res.channels.length;
-      for (let index = 0; index < len; index++) {
-        this.channelArray[index] = res.channels[index].unique_name;
-        // console.log( JSON.stringify(this.channelArray[index]));
-      }
+     
+     this.channelArray =res.channels;
     },
       err => {
         console.log(err);
       })
   }
 
+  join(channels){
+   // console.log(channels,"ok")
+   this.member = channels;
+
+    var displayCh= this.ser.joinCh(channels);
+    displayCh.subscribe(response => (console.log(response)));
+
+  }
+
+  
+send(id){
+  this.member = id;
+}
+
 
  
   ngOnInit() {
-
-    this.showMsg();
+    setInterval(() => {this.showMsg() }, 1000)
+    //this.showMsg();
     this.showChannelList();
   }
 
