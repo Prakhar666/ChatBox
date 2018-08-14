@@ -26,6 +26,17 @@ export class AuthServiceService {
   sendmsg : string;
   showmsg;
 
+  canActivate()
+  {
+    if(JSON.parse(localStorage.getItem('Userdata'))!=undefined){
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
 getDetail() : Observable<any>
 {
   const body = new HttpParams().set('FriendlyName','Prakhar')

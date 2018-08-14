@@ -26,15 +26,14 @@ export class SigninComponent {
 
     } 
       
-    // else if (socialPlatform == "facebook") {
-    //   socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-    //   var val= this.ser.getDetail();
-    //   val.subscribe(data => console.log(data))
-    // }
+   
     
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
+        // sessionStorage.setItem('UserData', JSON.stringify(userData))
         console.log(socialPlatform+" sign in data : " , userData);
+        // this.ser.UserData=userData;
+        // this.ser.
 
          localStorage.setItem('id', userData.id);
          localStorage.setItem('name', userData.name);

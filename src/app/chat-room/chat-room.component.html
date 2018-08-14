@@ -8,8 +8,13 @@
                   <button (click)="addCh()">Create Channel</button><br/><br/>
             </div>
             
-            <input  type="text" placeholder="Search Channel here" (keyup)= "findCh" [(ngModel)]=item /><br/><br/>
-            
+            <input  type="text" placeholder="Search Channel here" (keyup)= "findCh()" [(ngModel)]=item /><br/><br/>
+            <div *ngFor="let channels of channelArray">
+                  <span *ngIf="reg.test(channels.unique_name)"> 
+                        <span> {{channels.unique_name}}</span>
+                  </span>
+
+            </div>
             <div class="Clist">
                <div id="chnlhead"> <i><h3>CHANNELS..</h3></i></div>
                   <div class="Clists">
@@ -27,11 +32,13 @@
 
 <div class=messages>
       <div class="menu">
-            <div class="search">
-                  <button type="button" class="btn btn-default btn-sm">
-                     <span class="glyphicon glyphicon-search"></span> Search 
-                  </button>
-            </div>
+            <b><i><div id="nameshow">#{{nameshow}}</div></i></b>
+
+            
+            <input  type="text" id="search" placeholder="Search...."/>
+                     <!-- <span class="glyphicon glyphicon-search"></span> Search  -->
+                  
+           
                         <div class= "logout">
                             <button (click) = "logout()">Logout</button> 
                             <span class = "glyphicon glyphicon-off"></span> 

@@ -3,7 +3,7 @@
     height: 100%;
     width: 20%;
     position: absolute;
-    background-color:#a74692;
+    background-color:#742c64;
 }
 
 h2{
@@ -34,14 +34,11 @@ h2{
 
  }   
 
- .search{
-     /* margin-top: 20%; */
-     margin-left: 50%;
-     height: 40%;
-     width: 60%;
-     margin-top: 1%;
-     border-radius: 6%;
+ #search{
+     
      position: absolute;
+     margin-left: 67%;
+     margin-top: -3%;
  }
 
  #chnlhead{
@@ -56,7 +53,8 @@ h2{
  .Clist{
      
      /* border: 1px solid #e76b6b; */
-     height: 62%;
+     margin-top: 34%;
+     height: 49%;
      width: 100%;
      position: absolute;
      
@@ -67,7 +65,7 @@ h2{
     overflow: auto;
     position: absolute;
     width: 100%;
-    height: 82%;
+    height: 75%;
  }
 
  li{
@@ -79,21 +77,33 @@ h2{
  .glyphicon.glyphicon-star-empty {
     font-size: 27px;
     margin-left: 94%;
-    margin-top: 1%;
+    margin-top: -67%;
 }
 
 .logout{
     position: absolute;
     margin-left: 87%; 
-    margin-top: 1%; 
+    margin-top: -3%; 
     /* width: 30%; */
+}
+
+#nameshow{
+    /* border: 1px solid #e76b6b;  */
+    height: 60%;
+    width: 15%;
+    /* text-transform: uppercase; */
+    color: #4CAF50;
+    letter-spacing: 2px;
+    margin-top: 1.5%;
+    font-size: 26px;
+    /* margin-left: -2%; */
 }
 
 .typetext{
     border: 2px solid rgb(190, 185, 185);
     height: 8%;
     width: 100%;
-    margin-top: 53%;
+    margin-top: 55%;
     position: absolute;
     border-radius: 10px;
     /* margin-left: -5%; */
@@ -110,7 +120,7 @@ h2{
 
 .show{
     /* border: 1px solid blue; */
-    height: 84%;
+    height: 82%;
     width: 100%;
     position: absolute;
     
