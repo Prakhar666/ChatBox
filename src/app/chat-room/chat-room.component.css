@@ -3,14 +3,20 @@
     height: 100%;
     width: 20%;
     position: absolute;
-    background-color:#662658;
+    background-color:#a74692;
+}
+
+h2{
+    margin-left: -2%;
+    /* position: absolute; */
+    /* float: left; */
 }
 
 .channel1{
     margin-top: 50%;
 }
 .messages{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: 100%;
     width: 80%;
     margin-left: 20%;
@@ -38,25 +44,63 @@
      position: absolute;
  }
 
+ #chnlhead{
+    /* border: 1px solid blue; */
+    height: 14%;
+    text-align: left;
+    color: #b4eb1f;
+    /* background-color: #805175; */
+   
+ }
+
+ .Clist{
+     
+     /* border: 1px solid #e76b6b; */
+     height: 62%;
+     width: 100%;
+     position: absolute;
+     
+ }
+
+ .Clists{
+    /* border: 2px solid #e94a4a;  */
+    overflow: auto;
+    position: absolute;
+    width: 100%;
+    height: 82%;
+ }
+
+ li{
+     cursor: pointer;
+ }
+
  
 
  .glyphicon.glyphicon-star-empty {
     font-size: 27px;
-    margin-left: 90%;
+    margin-left: 94%;
     margin-top: 1%;
 }
 
+.logout{
+    position: absolute;
+    margin-left: 87%; 
+    margin-top: 1%; 
+    /* width: 30%; */
+}
+
 .typetext{
-    border: 1px solid black;
+    border: 2px solid rgb(190, 185, 185);
     height: 8%;
     width: 100%;
-    margin-top: 54%;
+    margin-top: 53%;
     position: absolute;
+    border-radius: 10px;
     /* margin-left: -5%; */
 }
 
 #type{
-    width: 90%;
+    width: 95%;
     height: 100%;
 }
 
@@ -69,24 +113,28 @@
     height: 84%;
     width: 100%;
     position: absolute;
-    /* margin-left: 60%; */
+    
     margin-right: 50%;
-    /* margin-left: 30%; */
+    
     margin-top: 5%;
     overflow: auto;
-    /* margin-bottom: 50%; */
+   background-color: #eee5ebec;
+}
+.alert{
+    width: 51%;
+    
 }
 
-.left{
+#left{
     float: left;
 }
 
-.right{
+#right{
     float: right;
 }
 
 #chnl{
-    color: rgb(238, 159, 183);
+    color: #b4eb1f;
     /* position: absolute; */
     overflow: hidden;
 }
@@ -96,10 +144,30 @@
 }
 
 #createCh{
-    margin-top: 2%;
-    /* margin-bottom: 30%; */
-    height: 40%;
+    /* color: rgb(238, 159, 183); */
+    /* margin-top: -2%; */
+    /* margin-bottom: 60%; */
+    height: 30%;
     width: 100%;
-    /* position: absolute; */
+    position: absolute;
+    margin-left: -50%;
+}
+
+.createC{
+    border: 1px solid white;
+    margin-top: -45%;
+    /* margin-bottom: 20%; */
+    /* margin-left: 30%; */
+    position: absolute;
+    width: 100%;
+}
+
+#sendglyph{
+    position: relative;
+    clear: both;
+    border: none;
+    float: right;
+    margin-top: -3%;
+    margin-right: 2%;
 }
 

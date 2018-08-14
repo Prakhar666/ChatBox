@@ -1,30 +1,27 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 <div class= channels>
       <!-- <span class="glyphicon glyphicon-bell"></span> -->
       <h2>{{displayname}}</h2>
-     
       <div class="channel1">
-<div>
-  <input id="createCh" type="text" placeholder="create channel" [(ngModel)]="addchnl"/><br/><br/>
-  <button (click)="addCh()">Create channel</button><br/><br/>
+        <div>
+            <div class="createC">
+                  <input id="createCh" type="text" placeholder="create channel" [(ngModel)]="addchnl"/><br/><br/>
+                  <button (click)="addCh()">Create Channel</button><br/><br/>
+            </div>
+            
+            <input  type="text" placeholder="Search Channel here" (keyup)= "findCh" [(ngModel)]=item /><br/><br/>
+            
+            <div class="Clist">
+               <div id="chnlhead"> <i><h3>CHANNELS..</h3></i></div>
+                  <div class="Clists">
+                    <b><ul *ngFor="let channels of channelArray"> 
+                    <li id="chnl" (click) = "send(channels)" >{{channels.unique_name}} &nbsp;<button (click)="join(channels)">Join</button></li>
+                    </ul></b>
+                  </div>
+            </div>
 
-  <input  id="createCh"  type="text" placeholder="Search Channel here" /><br/><br/>
+        </div>
 
-  <div>
-        <h3>Channels</h3>
-  <b><ul   *ngFor="let channels of channelArray"> 
-       <li id="chnl" (click) = "send(channels)" >{{channels.unique_name}}<button (click)="join(channels)">Join</button></li>
-      </ul></b>
-</div>
-
-</div>
-
-<!-- <div>
-      <input type="text" placeholder="add user"  [(ngModel)]="adduser"/>
-      <button (click)="addmember()" >add user</button><br/>
-</div> -->
-  </div>
+      </div>
 
 </div>
 
@@ -32,9 +29,14 @@
       <div class="menu">
             <div class="search">
                   <button type="button" class="btn btn-default btn-sm">
-                              <span class="glyphicon glyphicon-search"></span> Search 
-                            </button>
-                        </div>
+                     <span class="glyphicon glyphicon-search"></span> Search 
+                  </button>
+            </div>
+                        <div class= "logout">
+                            <button (click) = "logout()">Logout</button> 
+                            <span class = "glyphicon glyphicon-off"></span> 
+                        </div>      
+                        
                         <span class="glyphicon glyphicon-star-empty"></span>
             <!-- <input type="text" placeholder="Search" id="search"> -->
       </div>
@@ -42,17 +44,18 @@
       <div class="show">
                   <!-- <button (click)="showMsg()" >show message  </button>  -->
                    <div *ngFor="let msgdetail of messages">
-                         <span class="right" *ngIf="msgdetail.from===id">{{msgdetail.body}}</span><br/>
-                         <!-- from {{sendmsg.from}}<br/> -->
-                         <span class="left" *ngIf="msgdetail.from!=id">{{msgdetail.body}}</span>
+                         <span id="right" class="alert alert-success" *ngIf="msgdetail.from===id">{{msgdetail.body}}</span><br/>
+                         <!-- from: {{msgdetail.from}}<br/> -->
+                         <span id="left" class="alert alert-info" *ngIf="msgdetail.from!=id">{{msgdetail.body}}</span>
                      
                    </div>   
-                    </div>       
+      </div>       
 
 
-<div class="typetext">
-      <input type="text" placeholder="send Message"  id="type" [(ngModel)]="sendmsg"  >
-      <button id="sendM" (click)="sendMsg()" >send message</button><br/>
+      <div class="typetext">
+            <input type="text" class="form-control" placeholder="send Message"  id="type" (keyup.enter)="sendMsg()" [(ngModel)]="sendmsg"  >
+            <span id="sendglyph" style="font-size: 24px"><i class= "glyphicon glyphicon-send"></i>  </span>
+            <!-- <button id="sendM" (click)="sendMsg()" >send message</button><br/> -->
 </div>
 
 
